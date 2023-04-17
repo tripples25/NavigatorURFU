@@ -1,17 +1,19 @@
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using UnityEngine;
 using UnityEngine.AI;
 
 public class PlayerNavigation : MonoBehaviour
 {
     [SerializeField] private GameObject destinationsParent;
+    [SerializeField] private TMP_InputField inputField;
     private Dictionary<string, Transform> destinations;
     private NavMeshAgent navMeshAgent;
     private CharacterController charCont;
 
     public static bool isControlledByPlayer = false;
-    
+
     private void Awake()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
@@ -21,10 +23,24 @@ public class PlayerNavigation : MonoBehaviour
 
     void Start()
     {
-        navMeshAgent.SetDestination(destinations["431"].transform.position);
     }
-    
+
     void Update()
+    {
+        ChangeNavigationMode();
+    }
+
+    public void SetDestination()
+    {
+        if (!destinations.ContainsKey(inputField.text))
+        {
+            print("Ошибка в названии аудитории.");
+            return;
+        }
+        navMeshAgent.SetDestination(destinations[inputField.text].transform.position);
+    }
+
+    private void ChangeNavigationMode()
     {
         if (isControlledByPlayer)
             DisableNavigation();
