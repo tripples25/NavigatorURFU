@@ -11,8 +11,7 @@ public class PlayerNavigation : MonoBehaviour
     private Dictionary<string, Transform> destinations;
     private NavMeshAgent navMeshAgent;
     private CharacterController charCont;
-
-    public static bool isControlledByPlayer = false;
+    private Vector3? destination;
 
     private void Awake()
     {
@@ -20,14 +19,18 @@ public class PlayerNavigation : MonoBehaviour
         charCont = GetComponent<CharacterController>();
         destinations = destinationsParent.GetComponentsInChildren<Transform>().Skip(1).ToDictionary(x => x.name);
     }
-
-    void Start()
+    
+    void FixedUpdate()
     {
-    }
+        if (destination.HasValue)
+            navMeshAgent.SetDestination(destination.Value);
 
-    void Update()
-    {
         ChangeNavigationMode();
+
+        if (!navMeshAgent.hasPath)
+            navMeshAgent.ResetPath();
+        
+        DrawPath();
     }
 
     public void SetDestination()
@@ -39,27 +42,47 @@ public class PlayerNavigation : MonoBehaviour
         }
         navMeshAgent.SetDestination(destinations[inputField.text].transform.position);
     }
+    
+    public void SetStartPoint(TMP_InputField input)
+    {
+        if (!destinations.ContainsKey(input.text))
+        {
+            print("Ошибка в названии аудитории.");
+            return;
+        }
+        navMeshAgent.Warp(destinations[input.text].position);
+    }
 
     private void ChangeNavigationMode()
     {
-        if (isControlledByPlayer)
-            DisableNavigation();
-        else
-            EnableNavigation();
+        PlayerMovement.instance.enabled = PlayerMovement.instance.joystick.Direction != Vector2.zero;
+        navMeshAgent.updateRotation = Look.instance.joystick.Direction == Vector2.zero;
     }
 
-    private void DisableNavigation()
+    void DrawPath()
     {
-        navMeshAgent.updatePosition = false;
-        navMeshAgent.updateRotation = false;
-        navMeshAgent.velocity = charCont.velocity;
-        PlayerMovement.instance.enabled = true;
-    }
-    
-    private void EnableNavigation()
-    {
-        navMeshAgent.updatePosition = true;
-        navMeshAgent.updateRotation = true;
-        PlayerMovement.instance.enabled = false;
+ 
+        var nav = GetComponent<NavMeshAgent>();
+        if( nav == null || nav.path == null )
+            return;
+ 
+        var line = this.GetComponent<LineRenderer>();
+        if( line == null )
+        {
+            line = this.gameObject.AddComponent<LineRenderer>();
+            line.material = new Material( Shader.Find( "Sprites/Default" ) ) { color = Color.yellow };
+            line.SetWidth( 0.5f, 0.5f );
+            line.SetColors( Color.yellow, Color.yellow );
+        }
+ 
+        var path = nav.path;
+ 
+        line.SetVertexCount( path.corners.Length );
+ 
+        for( int i = 0; i < path.corners.Length; i++ )
+        {
+            line.SetPosition( i, path.corners[ i ] );
+        }
+ 
     }
 }
