@@ -9,7 +9,15 @@ public class Look : MonoBehaviour
 	public VariableJoystick joystick;
 
 	float xRotation = 0f;
+	
+	public static Look instance;
 
+	private void Awake()
+	{
+		if (instance == null)
+			instance = this;
+	}
+	
 	void Update()
 	{
 		float mouseX = joystick.Horizontal * mouseSensitivity * Time.deltaTime;
