@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
@@ -12,6 +13,7 @@ public class PlayerNavigation : MonoBehaviour
     private NavMeshAgent navMeshAgent;
     private CharacterController charCont;
     private Vector3? destination;
+    public GameObject Panel;
 
     private void Awake()
     {
@@ -19,7 +21,16 @@ public class PlayerNavigation : MonoBehaviour
         charCont = GetComponent<CharacterController>();
         destinations = destinationsParent.GetComponentsInChildren<Transform>().Skip(1).ToDictionary(x => x.name);
     }
-    
+
+    private void Start()
+    {
+        foreach (var (name, trans) in destinations)
+        {
+            var pan = Instantiate(Panel, trans, false);
+            pan.transform.name = "РИ-" + name;
+        }
+    }
+
     void FixedUpdate()
     {
         if (destination.HasValue)
