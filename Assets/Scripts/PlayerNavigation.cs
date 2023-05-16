@@ -42,7 +42,27 @@ public class PlayerNavigation : MonoBehaviour
         }
         navMeshAgent.SetDestination(destinations[inputField.text].transform.position);
     }
-    
+
+    public void MenToilet()
+    {
+        navMeshAgent.SetDestination(destinations["Туалеты"].transform.position);
+    }
+
+    public void WomanToilet()
+    {
+        navMeshAgent.SetDestination(destinations["Туалеты"].transform.position);
+    }
+
+    public void Deanery()
+    {
+        navMeshAgent.SetDestination(destinations["Деканат"].transform.position);
+    }
+
+    public void Coworking()
+    {
+        navMeshAgent.SetDestination(destinations["Коворкинг"].transform.position);
+    }
+
     public void SetStartPoint(TMP_InputField input)
     {
         if (!destinations.ContainsKey(input.text))
