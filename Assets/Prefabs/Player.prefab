@@ -105,7 +105,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26439d1ffcdc34b49976851d590a5f44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  destination: {x: 0, y: 0, z: 0}
+  destinationsParent: {fileID: 0}
+  inputField: {fileID: 0}
+  navMeshAgent: {fileID: 2779588696474016573}
 --- !u!1 &1707007206763852914
 GameObject:
   m_ObjectHideFlags: 0

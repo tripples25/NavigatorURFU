@@ -9,26 +9,25 @@ public class PlayerNavigation : MonoBehaviour
     [SerializeField] private GameObject destinationsParent;
     [SerializeField] private TMP_InputField inputField;
     private Dictionary<string, Transform> destinations;
-    private NavMeshAgent navMeshAgent;
+    [SerializeField] private NavMeshAgent navMeshAgent;
     private CharacterController charCont;
     private Vector3? destination;
 
     private void Awake()
     {
-        navMeshAgent = GetComponent<NavMeshAgent>();
         charCont = GetComponent<CharacterController>();
         destinations = destinationsParent.GetComponentsInChildren<Transform>().Skip(1).ToDictionary(x => x.name);
     }
     
     void FixedUpdate()
     {
-        if (destination.HasValue)
-            navMeshAgent.SetDestination(destination.Value);
-
         ChangeNavigationMode();
 
-        if (!navMeshAgent.hasPath)
+        if (destination != null && Vector3.Distance(transform.position, destination.Value) <= 2)
+        {
             navMeshAgent.ResetPath();
+            destination = null;
+        }
         
         DrawPath();
     }
@@ -37,15 +36,20 @@ public class PlayerNavigation : MonoBehaviour
     {
         if (!destinations.ContainsKey(inputField.text))
         {
-            print("Ошибка в названии аудитории.");
+            if (inputField.text[0] == '1' || inputField.text[0] == '2' || inputField.text[0] == '3' ||
+                inputField.text[0] == '4')
+                navMeshAgent.SetDestination(destinations["Лестница"].transform.position);
+            else print("Ошибка в названии аудитории.");
+            
             return;
         }
         navMeshAgent.SetDestination(destinations[inputField.text].transform.position);
+        destination = destinations[inputField.text].transform.position;
     }
 
     public void MenToilet()
     {
-        navMeshAgent.SetDestination(destinations["Туалеты"].transform.position);
+        navMeshAgent.SetDestination(new Vector3(-37.2490005f,-9.46500015f,-46.1879997f));
     }
 
     public void WomanToilet()

@@ -8,22 +8,19 @@ public class MovePanel : MonoBehaviour
     {
         
     }
-
-    void Update()
-    {
-        if (isPressed)
-        {
-            transform.position = new Vector3(1170, 185, 0);
-        }
-        else 
-        {
-            transform.position = new Vector3(1170, -155, 0);
-        }
-
-    }
+    
 
     public void ButtonPressed()
     {
+        if (isPressed)
+        {
+            transform.position += new Vector3(0, 360, 0);
+        }
+        else
+        {
+            transform.position -= new Vector3(0, 360, 0);
+        }
+        
         isPressed = !isPressed;
     }
 }

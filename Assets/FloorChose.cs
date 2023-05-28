@@ -1,35 +1,22 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class FloorChose : MonoBehaviour
 {
     public GameObject Panel;
+    [SerializeField] private TMP_InputField inputField;
     
-    public static void LoadFirstFloor()
+    public static void LoadFloor(char floor)
     {
-        SceneManager.LoadScene("1 этаж");
-    }
-    
-    public static void LoadSecondFloor()
-    {
-        SceneManager.LoadScene("2 этаж");
-    }
-    
-    public static void LoadThirdFloor()
-    {
-        SceneManager.LoadScene("3 этаж");
-    }
-    
-    public static void LoadFourthFloor()
-    {
-        SceneManager.LoadScene("4 этаж");
+        SceneManager.LoadScene(floor + " этаж");
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        Panel.SetActive(true);
+        LoadFloor(inputField.text[0]);
     }
 }
