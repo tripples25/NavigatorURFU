@@ -33,22 +33,22 @@ public class MovePanel : MonoBehaviour
     public IEnumerator MoveDown()
     {
         var firstPos = transform.position;
-        var newPos = transform.position - new Vector3(0, 560, 0);
-        while (transform.position != newPos)
+        var newPos = transform.position - new Vector3(0, 570, 0);
+        while (Vector3.Distance(transform.position, newPos) >= 0.008f)
         {
-            transform.position = Vector3.MoveTowards(transform.position, newPos, 8);
-            yield return new WaitForSeconds(0.005f);
+            transform.position = Vector3.MoveTowards(transform.position, newPos, 12);
+            yield return new WaitForSeconds(Time.deltaTime);
         }
     }
     
     public IEnumerator MoveUp()
     {
         var firstPos = transform.position;
-        var newPos = transform.position + new Vector3(0, 560, 0);
-        while (transform.position != newPos)
+        var newPos = transform.position + new Vector3(0, 570, 0);
+        while (Vector3.Distance(transform.position, newPos) >= 0.008f)
         {
-            transform.position = Vector3.MoveTowards(transform.position, newPos,  8);
-            yield return new WaitForSeconds(0.005f);
+            transform.position = Vector3.MoveTowards(transform.position, newPos,  12);
+            yield return new WaitForSeconds(Time.deltaTime);
         }
     }
 }

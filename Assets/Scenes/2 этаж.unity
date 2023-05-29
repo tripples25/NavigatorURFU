@@ -99,7 +99,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_LightingSettings: {fileID: 4890085278179872738, guid: 46b52e47a02030d4eb80558bdbe240c7,
+  m_LightingSettings: {fileID: 4890085278179872738, guid: fd371f7ea6f3f15489818d6ed06acd15,
     type: 2}
 --- !u!196 &4
 NavMeshSettings:
@@ -3688,7 +3688,7 @@ PrefabInstance:
     - target: {fileID: -4757262693105426103, guid: 4f3588feeee30b54c99f1344ce3665c8,
         type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -1408519335997012642, guid: 4f3588feeee30b54c99f1344ce3665c8,
         type: 3}
@@ -3718,27 +3718,27 @@ PrefabInstance:
     - target: {fileID: 1592715506554894722, guid: 4f3588feeee30b54c99f1344ce3665c8,
         type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 2147483647
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2249378215897318384, guid: 4f3588feeee30b54c99f1344ce3665c8,
         type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 2
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 4870066557994265274, guid: 4f3588feeee30b54c99f1344ce3665c8,
         type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 2
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 5229629627433894012, guid: 4f3588feeee30b54c99f1344ce3665c8,
         type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 2
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 7895118455360086297, guid: 4f3588feeee30b54c99f1344ce3665c8,
         type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 2
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4f3588feeee30b54c99f1344ce3665c8, type: 3}
@@ -4068,7 +4068,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 4
+  m_Lightmapping: 2
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
@@ -4087,7 +4087,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 541376914}
   m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
-  m_LocalPosition: {x: -21.9, y: 3, z: 0}
+  m_LocalPosition: {x: -117.1, y: 29.11, z: -19.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
