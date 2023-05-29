@@ -8,6 +8,7 @@ public class PlayerNavigation : MonoBehaviour
 {
     [SerializeField] private GameObject destinationsParent;
     [SerializeField] private TMP_InputField inputField;
+    [SerializeField] private GameObject Panel;
     private Dictionary<string, Transform> destinations;
     [SerializeField] private NavMeshAgent navMeshAgent;
     private CharacterController charCont;
@@ -17,6 +18,17 @@ public class PlayerNavigation : MonoBehaviour
     {
         charCont = GetComponent<CharacterController>();
         destinations = destinationsParent.GetComponentsInChildren<Transform>().Skip(1).ToDictionary(x => x.name);
+    }
+    
+    private void Start()
+    {
+        foreach (var (name, trans) in destinations)
+        {
+            var trans1 = trans;
+            trans1.position -= new Vector3(0, 0.5f, 0);
+            var pan = Instantiate(Panel, trans1, false);
+            pan.transform.name = "РИ-" + name;
+        }
     }
     
     void FixedUpdate()

@@ -107,6 +107,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   destinationsParent: {fileID: 0}
   inputField: {fileID: 0}
+  Panel: {fileID: 7573588648892369774, guid: e08bd1c5bea00ec4b8ce57e27fff5ceb, type: 3}
   navMeshAgent: {fileID: 2779588696474016573}
 --- !u!1 &1707007206763852914
 GameObject:
@@ -153,7 +154,7 @@ GameObject:
   - component: {fileID: 1707007207894266373}
   m_Layer: 0
   m_Name: Camera
-  m_TagString: Untagged
+  m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

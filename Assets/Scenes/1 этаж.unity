@@ -4470,6 +4470,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 1707007206374219090, guid: e54c69233b7813843bdf0b87ddcfa3ca,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 1707007206374219092, guid: e54c69233b7813843bdf0b87ddcfa3ca,
         type: 3}
       propertyPath: m_RootOrder
@@ -4530,6 +4535,11 @@ PrefabInstance:
       propertyPath: joystick
       value: 
       objectReference: {fileID: 786729027}
+    - target: {fileID: 1707007207894266371, guid: e54c69233b7813843bdf0b87ddcfa3ca,
+        type: 3}
+      propertyPath: m_TagString
+      value: MainCamera
+      objectReference: {fileID: 0}
     - target: {fileID: 1707007207894266373, guid: e54c69233b7813843bdf0b87ddcfa3ca,
         type: 3}
       propertyPath: joystick
@@ -4560,6 +4570,12 @@ PrefabInstance:
       propertyPath: m_AutoTraverseOffMeshLink
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8074468236872980443, guid: e54c69233b7813843bdf0b87ddcfa3ca,
+        type: 3}
+      propertyPath: Panel
+      value: 
+      objectReference: {fileID: 7573588648892369774, guid: e08bd1c5bea00ec4b8ce57e27fff5ceb,
+        type: 3}
     - target: {fileID: 8074468236872980443, guid: e54c69233b7813843bdf0b87ddcfa3ca,
         type: 3}
       propertyPath: inputField
