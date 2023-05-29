@@ -10,7 +10,7 @@ public class MovePanel : MonoBehaviour
     void Start()
     {
         standardPos = this.transform.position;
-        pressedPos = standardPos -= new Vector3(0, 560, 0);
+        pressedPos = standardPos -= new Vector3(0, Screen.width / 2 - 10, 0);
     }
     
 
@@ -33,7 +33,8 @@ public class MovePanel : MonoBehaviour
     public IEnumerator MoveDown()
     {
         var firstPos = transform.position;
-        var newPos = transform.position - new Vector3(0, 570, 0);
+        var newPos = transform.position - new Vector3(0, Screen.width / 2 + 40, 0);
+        //570
         while (Vector3.Distance(transform.position, newPos) >= 0.008f)
         {
             transform.position = Vector3.MoveTowards(transform.position, newPos, 12);
@@ -44,7 +45,7 @@ public class MovePanel : MonoBehaviour
     public IEnumerator MoveUp()
     {
         var firstPos = transform.position;
-        var newPos = transform.position + new Vector3(0, 570, 0);
+        var newPos = transform.position + new Vector3(0, Screen.width / 2 + 40, 0);
         while (Vector3.Distance(transform.position, newPos) >= 0.008f)
         {
             transform.position = Vector3.MoveTowards(transform.position, newPos,  12);
