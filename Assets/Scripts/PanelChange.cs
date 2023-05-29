@@ -1,9 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using TMPro;
-using Unity.VisualScripting.Antlr3.Runtime.Tree;
+﻿using TMPro;
 using UnityEngine;
-using static Unity.VisualScripting.Icons;
 
 public class PanelChange : MonoBehaviour
 {
